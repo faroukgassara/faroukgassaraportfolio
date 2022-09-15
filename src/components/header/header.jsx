@@ -1,61 +1,86 @@
-import React, { useState } from 'react';
-import './header.css'
+import React, { useState } from "react";
+import "./header.css";
 
 const Header = () => {
-    const [Toggle,showMenu]=useState(false);
+  window.addEventListener("scroll", function () {
+    const header = document.querySelector(".header");
+    if (this.scrollY >= 80) header.classList.add("scroll-header");
+    else header.classList.remove("scroll-header");
+  });
+
+  const [Toggle, showMenu] = useState(false);
+  const [activeNav, SetActiveNav] = useState("#home");
   return (
     <header className="header">
-        <nav className="nav container">
-            <a href="index.html" className="nav_logo">Farouk</a>
-            <div className={Toggle ? 'nav_menu show-menu':'nav_menu'}>
-                <ul className="nav_list grid">
-                    <li className="nav_item">
-                        <a href="#home" className="nav_link acctive-link">
-                            <i className="uil uil-estate nav_icon"></i> Home
-                        </a>
-                    </li>
+      <nav className="nav container">
+        <a href="index.html" className="nav_logo">
+          Farouk
+        </a>
+        <div className={Toggle ? "nav_menu show-menu" : "nav_menu"}>
+          <ul className="nav_list grid">
+            <li className="nav_item">
+              <a
+                href="#home"
+                onClick={() => {
+                  SetActiveNav("#home");
+                }}
+                className={
+                  activeNav === "#home" ? "nav_link active-link" : "nav_link"
+                }
+              >
+                <i className="uil uil-estate nav_icon"></i> Home
+              </a>
+            </li>
 
-                    <li className="nav_item">
-                        <a href="#about" className="nav_link">
-                            <i className="uil uil-user nav_icon"></i> About
-                        </a>
-                    </li>
+            <li className="nav_item">
+              <a href="#about" className="nav_link">
+                <i className="uil uil-user nav_icon"></i> About
+              </a>
+            </li>
 
-                    <li className="nav_item">
-                        <a href="#skills" className="nav_link">
-                            <i className="uil uil-file-alt nav_icon"></i> Skills
-                        </a>
-                    </li>
+            <li className="nav_item">
+              <a href="#skills" className="nav_link">
+                <i className="uil uil-file-alt nav_icon"></i> Skills
+              </a>
+            </li>
 
-                    <li className="nav_item">
-                        <a href="#services" className="nav_link">
-                            <i className="uil uil-briefcase-alt nav_icon"></i> Services
-                        </a>
-                    </li>
+            <li className="nav_item">
+              <a href="#services" className="nav_link">
+                <i className="uil uil-briefcase-alt nav_icon"></i> Projects
+              </a>
+            </li>
 
-                    <li className="nav_item">
-                        <a href="#portfolio" className="nav_link">
-                            <i className="uil uil-scenery nav_icon"></i> Portfolio
-                        </a>
-                    </li>
+            <li className="nav_item">
+              <a href="#qualification" className="nav_link">
+                <i className="uil uil-briefcase-alt nav_icon"></i> Qualification
+              </a>
+            </li>
 
-                    <li className="nav_item">
-                        <a href="#contact" className="nav_link">
-                            <i className="uil uil-message nav_icon"></i> Contact
-                        </a>
-                    </li>
-                </ul>
+            <li className="nav_item">
+              <a href="#testimonials" className="nav_link">
+                <i className="uil uil-scenery nav_icon"></i> COURSES AND ACTIVITIES
+              </a>
+            </li>
 
-                <i class='uil uil-times nav_close' onClick={() =>showMenu(!Toggle) }></i>
-            </div>
+            <li className="nav_item">
+              <a href="#contact" className="nav_link">
+                <i className="uil uil-message nav_icon"></i> Contact
+              </a>
+            </li>
+          </ul>
 
-            <div className="nav_toggle" onClick={() =>showMenu(!Toggle) }>
-                <i class='uil uil-apps' ></i>
-            </div>
+          <i
+            class="uil uil-times nav_close"
+            onClick={() => showMenu(!Toggle)}
+          ></i>
+        </div>
 
-        </nav>
+        <div className="nav_toggle" onClick={() => showMenu(!Toggle)}>
+          <i class="uil uil-apps"></i>
+        </div>
+      </nav>
     </header>
   );
-}
+};
 
 export default Header;
