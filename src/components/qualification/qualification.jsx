@@ -111,7 +111,7 @@ const Qualification = () => {
                   Higher Institute of Multimedia Arts of Manouba - ISAMM
                 </span>
                 <div className="qualification_calender">
-                  <i className="uil uil-calendar-alt"></i> Sep 2020 - Jun 2023
+                  <i className="uil uil-calendar-alt"></i> Sep 2017 - Jun 2020
                 </div>
               </div>
 
